@@ -10,8 +10,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{8FD4E355-D92A-4C59-8223-94CCB1A10D23}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Pigu.lt</RootNamespace>
-    <AssemblyName>Pigu.lt</AssemblyName>
+    <RootNamespace>RDE.lt</RootNamespace>
+    <AssemblyName>RDE.lt</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
