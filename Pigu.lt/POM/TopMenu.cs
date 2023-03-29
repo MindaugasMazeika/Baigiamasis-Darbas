@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pigu.lt.POM
+namespace RDE.LT.POM
 {
     internal class TopMenu
     {
@@ -19,7 +19,7 @@ namespace Pigu.lt.POM
         public void SearchByText(string text)
         {
             generalMethods.EnterText("//input[@name='search_string']", text);
-            generalMethods.ClickElement("//button[@data-plugin='searchSubmitButton']");
+            generalMethods.ClickElementByJs("//button[@data-plugin='searchSubmitButton']");
 
 
         }

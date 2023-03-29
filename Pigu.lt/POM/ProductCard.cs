@@ -2,52 +2,68 @@
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pigu.lt.POM
+namespace RDE.LT.POM
 {
     internal class ProductCard
     {
         IWebDriver driver;
+        GeneralMethods generalMethods;
         public ProductCard(IWebDriver driver)
         {
             this.driver = driver;
+            generalMethods = new GeneralMethods(driver);
         }
-        public void ValidateMainInfo()
+        public void CheckBreadcrumbsCount(int x)
         {
-            IWebElement productName = driver.FindElement(By.XPath("//h1[@itemprop='name']"));
-            IWebElement productImage = driver.FindElement(By.XPath("//img[@itemprop='image']"));
-            IWebElement productPrice = driver.FindElement(By.XPath("//div[@itemprop='offers']"));
-            IWebElement addToCartButton = driver.FindElement(By.XPath("//div[contains(@class,'product-info')]//span[text()='Pridėti į krepšelį']"));
-            IWebElement productSpecs = driver.FindElement(By.XPath("//div[@id='content-tabs']"));
-
-            Assert.IsTrue(productName.Displayed);
-            Assert.IsTrue(productImage.Displayed);
-            Assert.IsTrue(productPrice.Displayed);
-            Assert.IsTrue(addToCartButton.Displayed);
-            Assert.IsTrue(productSpecs.Displayed);
-
+            int CountOfBreadcrumbs = generalMethods.GetElementsCountByXpath("//li[@itemprop='itemListElement']");
+            Assert.AreEqual(x, CountOfBreadcrumbs, "Expected 3 breadcrumbs, but got : " + CountOfBreadcrumbs);
         }
 
-        public void ValidateOtherSections() {
-
-            IWebElement similarItemsSection = driver.FindElement(By.XPath("(//div[contains(@class,'retailrocket-items')])[1]"));
-            IWebElement buyExtra = driver.FindElement(By.XPath("(//div[contains(@class,'retailrocket-items')])[2]"));
-            IWebElement wholeTopbar = driver.FindElement(By.XPath("//header[@class='header']"));
-            IWebElement promoBlueLine = driver.FindElement(By.XPath("//div[@class='promo-sale ui-footer']"));
-
-            Assert.IsTrue(similarItemsSection.Displayed);
-            Assert.IsTrue(buyExtra.Displayed);
-            Assert.IsTrue(wholeTopbar.Displayed);
-            Assert.IsTrue(promoBlueLine.Displayed);
+        public void CheckIfNameExists()
+        {
+            generalMethods.CheckIfElementExists("//h1[@itemprop='name']");
         }
 
+        public void CheckIfImageExists()
+        {
+            generalMethods.CheckIfElementExists("//img[@itemprop='image']");
+        }
 
+        public void CheckIfOffersExists()
+        {
+            generalMethods.CheckIfElementExists("//div[@itemprop='offers']");
+        }
 
+        public void CheckIfAddCartExists()
+        {
+            generalMethods.CheckIfElementExists("//div[contains(@class,'product-info')]//span[text()='Pridėti į krepšelį']");
+        }
+        public void CheckIfSpecsExists()
+        {
+            generalMethods.CheckIfElementExists("//div[@id='content-tabs']");
+        }
+        public void CheckIfSimilarItemsExists()
+        {
+            generalMethods.CheckIfElementExists("(//div[contains(@class,'retailrocket-items')])[1]");
+        }
+        public void CheckIfSuggestedItemsExists()
+        {
+            generalMethods.CheckIfElementExists("(//div[contains(@class,'retailrocket-items')])[2]");
+        }
 
+        public void CheckIfHeaderExists()
+        {
+            generalMethods.CheckIfElementExists("//header[@class='header']");  
+        }
 
-
+        public void CheckIfPromoExists()
+        {
+            generalMethods.CheckIfElementExists("//div[@class='promo-sale ui-footer']");
+        }
     }
 }

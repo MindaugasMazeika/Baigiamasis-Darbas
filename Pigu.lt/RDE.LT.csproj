@@ -65,17 +65,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GeneralMethods.cs" />
+    <Compile Include="GeneralMethods\GeneralMethods.cs" />
+    <Compile Include="POM\LoginClass.cs" />
     <Compile Include="POM\Navigation.cs" />
     <Compile Include="POM\ProductCard.cs" />
     <Compile Include="POM\ProductList.cs" />
+    <Compile Include="POM\Sort.cs" />
     <Compile Include="POM\TopMenu.cs" />
-    <Compile Include="Testai.cs" />
+    <Compile Include="Testai\Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\LoginData.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Pigu.lt.POM
+namespace RDE.LT.POM
 {
     internal class ProductList
     {
